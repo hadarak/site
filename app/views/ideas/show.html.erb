@@ -1,20 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<div class="col-lg-12 text-center">
 <p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
+  <strong></strong>
+  <%= image_tag(@idea.picture_url, :width => 400) if @idea.picture.present? %>
+  <strong><h6></h6><%= @idea.name %></strong>
 </p>
+</div>
 
 <p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@idea.picture_url, :width => 600) if @idea.picture.present? %>
-  <h3>Comentarios</h3>
-<% @idea.comments.each do |comment| %>
+  <strong><h6>Descrição</h6></strong>
+
+  <pre><%= @idea.description %></pre>
+</p>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+
+
+  <h3>Comentários</h3>
+ <% @idea.comments.each do |comment| %>
+
+
+
+
   <div>
     <strong><%= comment.user_name %></strong>
     <br />
@@ -22,7 +39,6 @@
   </div>
 <% end %>
 <%= render 'comments/form' %>
-</p>
 
 <%= link_to 'Editar', edit_idea_path(@idea) %> |
 <%= link_to 'Voltar', ideas_path %>
