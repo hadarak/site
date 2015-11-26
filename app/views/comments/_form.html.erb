@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nome_de_usuário %><br>
-    <%= f.text_field :user_name %><%= current_user.email %>
+    <%= f.label :usuário %><br>
+ 
+    
+    <%= current_user.email %>
+
   </div>
   <div class="field">
     <%= f.label :mensagem %><br>
@@ -22,6 +25,6 @@
   <%= f.hidden_field :idea_id %>
   
   <div class="actions">
-    <%= f.submit %>
+    <button id="btn" >Enviar comentário</button>
   </div>
 <% end %>

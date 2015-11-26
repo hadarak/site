@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Nome de usuário   </th>
-      <th>Mensagem</th>
+      <th>Nome de usuário&nbsp&nbsp&nbsp</th>
+      <th>Mensagem&nbsp&nbsp&nbsp</th>
       <th>Lugar</th>
       <th colspan="3"></th>
     </tr>
@@ -14,13 +14,23 @@
 
   <tbody>
     <% @comments.each do |comment| %>
+    <?php
+
+  if (comment.user_name =! current_user.email) {
+     hide |comment|
+  }
+  
+
+  ?>
       <tr>
         <td><%= comment.user_name %></td>
-        <td><%= comment.body %></td>
-        <td><%= comment.idea_id %></td>
-        <td><%= link_to 'Show', comment %></td>
+        <td><pre><%= comment.body %></pre></td>
+        <td><pre><%= comment.idea_id %></pre></td>
+        <td>&nbsp&nbsp&nbsp&nbsp<%= link_to 'Show', comment %>&nbsp</td>
+
+
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td>&nbsp<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
