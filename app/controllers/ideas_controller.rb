@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy]
 
   # GET /ideas
   # GET /ideas.json
@@ -37,10 +37,11 @@ class IdeasController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
   def update
+    
     respond_to do |format|
       if @idea.update(idea_params)
         format.html { redirect_to @idea, notice: 'O lugar foi alterado.' }

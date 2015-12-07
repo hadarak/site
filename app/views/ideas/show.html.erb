@@ -32,6 +32,7 @@
 
 
 
+
   <div>
     <strong><%= comment.user_name %></strong>
     <br />
@@ -40,5 +41,5 @@
 <% end %>
 <%= render 'comments/form' %>
 
-<%= link_to 'Editar', edit_idea_path(@idea) %> |
+<%= link_to 'Editar', edit_idea_path(@idea)  %> |
 <%= link_to 'Voltar', ideas_path %>

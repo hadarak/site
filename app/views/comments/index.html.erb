@@ -12,28 +12,22 @@
     </tr>
   </thead>
 
-  <tbody>
     <% @comments.each do |comment| %>
-    <?php
 
-  if (comment.user_name =! current_user.email) {
-     hide |comment|
-  }
-  
-
-  ?>
       <tr>
         <td><%= comment.user_name %></td>
         <td><pre><%= comment.body %></pre></td>
         <td><pre><%= comment.idea_id %></pre></td>
-        <td>&nbsp&nbsp&nbsp&nbsp<%= link_to 'Show', comment %>&nbsp</td>
+        <td>&nbsp&nbsp&nbsp&nbsp<%= link_to 'Ver', comment %>&nbsp</td>
 
-
+<!--
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
         <td>&nbsp<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    -->
       </tr>
     <% end %>
   </tbody>
+  
 </table>
 
 <br>

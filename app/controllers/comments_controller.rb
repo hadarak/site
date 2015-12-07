@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user! , only: [:new, :show, :edit, :update, :destroy]
+
 
   # GET /comments
   # GET /comments.json
@@ -26,7 +27,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_name = current_user.email
+    @comment.user_name = current_user.username
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comentário criado com sucesso.' }
@@ -42,7 +43,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @comment.update(comment_params) 
         format.html { redirect_to @comment, notice: 'Comentário editado com sucesso.' }
         format.json { render :show, status: :ok, location: @comment }
       else
@@ -74,3 +75,5 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:user_name, :body, :idea_id)
     end
 end
+
+
