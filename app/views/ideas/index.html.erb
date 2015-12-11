@@ -1,21 +1,20 @@
+<br><br><br><br>
 <p id="notice"><%= notice %></p>
 <header>
         <div class="container">
             <div class="intro-text">
-              <!--  <div class="intro-lead-in">Partiu?</div>
-                <div class="intro-heading"></div>
-            -->
                 <a href="#recomendados" class="page-scroll btn btn-info"><font face="URW Gothic L,DEMI",size="5">Pra onde?</font></a>
                 <a class="page-scroll btn btn-info" href="/ideas/new" ><font face="URW Gothic L,DEMI",size="5">Recomende um lugar</font></a><br><br>
                 <a href="#sobre" class="page-scroll btn btn-info"><font face="URW Gothic L,DEMI",size="5">Sobre o site</font></a>
                 <a href="#team" class="page-scroll btn btn-info"><font face="URW Gothic L,DEMI",size="5">Quem somos?</font></a>
+                <% if (user_signed_in? ) %>
+                <a href="#chat" class="page-scroll btn btn-info"><font face="URW Gothic L,DEMI",size="5">Chat</font></a>           
+                <% else %>
+                <% end %>
             </div>
         </div>
     </header>
-
 <br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
-
 <section id="recomendados" class="bg-light-gray">
 <table>
 <div class="col-lg-12 text-center">
@@ -26,26 +25,19 @@
  
   <tbody>
 
+
     <% @ideas.each do |idea| %>
-                                
-       
-
-
-
 <center>
     <br><br><br>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-
-                    
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <a 
                     href="http://localhost:3000/ideas/"idea.id"">
-
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 
@@ -55,23 +47,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <br><font size="5", face="URW Gothic L,DEMI"><%= idea.name %></font>
-<!--
-                        <p><%= idea.description %></p>
--->
                     </div>
-                    
-                    
-
-
-
-
-
-
-
-
-
-
-
             <% if (user_signed_in? && current_user.username == "admin") %>
              
             <%= link_to 'Ver', idea %> |
@@ -79,49 +55,16 @@
            
         <% else %>
          <%= link_to 'Ver', idea %>
-        <% end %>
-
-
-
-
-
-
-
-
-<!--
-                    <%= link_to 'Ver', idea %> |
-
-                    <%= link_to 'Deletar', idea, method: :delete, data: { confirm: '⚠ Você tem certeza?' } %>
--->
-                    
+        <% end %>      
                 </div>
             </div>
-        </div>
-    <br><br><br>
+        </div>    
 </center>
     <% end %>
   </tbody>
 </table>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br>
-<footer>
-</footer>
-
-
 <section id="sobre" class="bg-light-gray">
     <br><br><br>
 <center><font size="6">Sobre o site</font></center><br>
@@ -136,24 +79,6 @@ Ser reconhecido pela qualidade de serviços, opções e atualizações baseadas 
 <font size="4">Wanderlust</font>
 
 </section>
-
-
-
-
-
-
-
-<br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br><br><br></br><br></br>
-
-
-
-
-
-
-
-
-
-
     <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -217,12 +142,41 @@ Ser reconhecido pela qualidade de serviços, opções e atualizações baseadas 
     </section>
 
 
+<% if (user_signed_in? ) %>
+<section id="chat" class="bg-light-gray">
+<table align="center"><tr><td height="30" colspan="2">
+<br><br><br>
+</br></br></br>
+<div align="center"><font size="6",face="URW Gothic L,DEMI">Chat</font><br></br></div>
+</td>
+</tr>
+<form method="post" action="http://batepapo.zetboo.com/batepapo.html" target="_blank" />
+<input type="hidden" name="titulo_room" value="Partiu viajar" />
+<input type="hidden" name="room" value="Travellers" />
+<input type="hidden" name="cor" value="#00CCCC" />
+<input type="hidden" name="lg" value="pt-br" />
 
-
-
-
-
-
-
-
-
+<tr>
+<td align="right">
+ Usuario : </td>
+<td align="left"><input type="text" name="nome" size="20" /></td>
+</tr><tr>
+<td align="right">Estado : </td>
+<td align="left"><input type="text" name="vila" size="20" /></td>
+</tr><tr>
+<td align="right">Idade : </td>
+<td align="left"><input type="text" name="idade" size="4" /></td>
+</tr><tr>
+<td align="right">Sexo : </td>
+<td align="left">
+<input type=radio name="sexe" value="H" checked />Homem
+<input type=radio name="sexe" value="M" checked />Mulher
+</td>
+</tr><tr>
+<td colspan="2" align="center"><input TYPE="submit" value="conexão" name="criar" /></td>
+</form>
+</tr>
+</table>
+</section> 
+<% else %>
+<% end %>

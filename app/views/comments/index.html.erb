@@ -1,57 +1,25 @@
 <p id="notice"><%= notice %></p>
 <br><br><br><br><br><br>
 <h1>Lista de comentários</h1>
-
 <table>
   <thead>
     <tr>
       <th>Nome de usuário&nbsp&nbsp&nbsp</th>
       <th>Mensagem&nbsp&nbsp&nbsp</th>
-<!--
-      <th>Lugar</th>
-    -->  
       <th colspan="3"></th>
     </tr>
   </thead>
-
     <% @comments.each do |comment| %>
-
       <tr>
         <td><%= comment.user_name %></td>
         <td><pre><%= comment.body %></pre></td>
-<!--
-        <td><pre><%= comment.idea_id %></pre></td>
-    -->    
-        <td>&nbsp&nbsp&nbsp&nbsp<%= link_to 'Ver', comment %>&nbsp</td>
-
-
-
-
-
-
-
 <% if (user_signed_in? && current_user.username == comment.user_name || current_user.username == "admin") %>
-             
-           <td> | <%= link_to 'Editar', edit_comment_path(comment) %> |</td>
-        <td>&nbsp<%= link_to 'Deletar', comment, method: :delete, data: { confirm: 'Você tem certeza?' } %></td> 
-           
+          <td>&nbsp&nbsp&nbsp&nbsp<%= link_to 'Ver', comment %>&nbsp</td>
+          <td> | <%= link_to 'Editar', edit_comment_path(comment) %> |</td>
+          <td>&nbsp<%= link_to 'Deletar', comment, method: :delete, data: { confirm: 'Você tem certeza?' } %></td> 
         <% else %>
-         
         <% end %>
-
-
-
-<!--
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td>&nbsp<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-    -->
       </tr>
     <% end %>
   </tbody>
-  
 </table>
-
-<br>
-<!--
-<%= link_to 'Novo comentário', new_comment_path %>
--->
